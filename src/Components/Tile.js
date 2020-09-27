@@ -7,7 +7,8 @@ export default class Canvas extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         hexSize: 20
+         hexSize: 50,
+         hexOrigin: {x: 100, y: 130}
       }
    }
 
@@ -26,10 +27,11 @@ export default class Canvas extends React.Component {
    }
 
    drawHexes() {
-      for (let r = 0; r <= 5; r++) {
-         for (let q = 0; q <= 5; q++) {
+      for (let r = 0; r <= 4; r++) {
+         for (let q = 0; q <= 4; q++) {
             let center = this.hexToPixel(this.hex(q, r));
             this.drawHex(this.canvashex, center)
+            this.drawHexCordinates(this.canvashex, center, this.hex(q, r));
          }
       }
    }
@@ -52,8 +54,9 @@ export default class Canvas extends React.Component {
    }
 
    hexToPixel(h) {
-      let x = this.state.hexSize * Math.sqrt(3) * (h.q + h.r/2);
-      let y = this.state.hexSize * 3/2 * h.r;
+      let hexOrigin = this.state.hexOrigin;
+      let x = this.state.hexSize * Math.sqrt(4) * (h.q + h.r/2) + hexOrigin.x;
+      let y = this.state.hexSize * 3/2 * h.r + hexOrigin.y;
       return this.Point(x, y);
    }
 
@@ -77,8 +80,8 @@ export default class Canvas extends React.Component {
 
    drawHexCordinates(canvasID, center, h) {
       const ctx = canvasID.getContext('2d');
-      ctx.fillText(h.q, center.x, center.y);
-      ctx.fillText(h.r, center.x, center.y)
+      ctx.fillText(h.q, center.x-10, center.y);
+      ctx.fillText(h.r, center.x+7, center.y)
    }
 
    render() {
