@@ -43,63 +43,17 @@ class Board(object):
 
       self._generate_board()
 
-   @staticmethod
-   def print_board(board : Board):
-      tabs = [3, 2, 0, 2, 3]
-      for i, tile in enumerate(board.tiles):
-         endchar = ''
-         if i in board._ends:
-            endchar = '\n'
-         if i in board._starts:
-            tab = tabs.pop(0)
-            print(" "*tab, end='')
-         print(" " + str(tile.type) + " ", end=endchar)
-
-   @staticmethod
-   def find_row(board : Board, index : int):
-      row_index = 0
-      for i, row_cnt in enumerate(board._rows):
-         row_index += row_cnt
-         if index < row_index:
-            return i
-
-   @staticmethod
-   def _set_type(board : Board, curr_tile : Tile, curr_type : TileType, types : list):
-      # Check to see if the current placement is valid.
-      # Current rules being applied:
-      #  - Ensure none of the tile types are touching the same time type
-      #  - Ensure that there are only a set number of tiles
-      if (not curr_type in [ t.type for t in curr_tile.neighbors ] and
-         board._get_type_count(curr_type) < Board._BOARD_DATA[board.size].maximum_tile_cnt[curr_type]
-      ):
-         curr_tile.type = curr_type
-
-         # If the next index matches the length of the board, we are done
-         if curr_tile.index + 1 == len(board.tiles):
-            return True
-
-         # Iterate through all the possible tile types until a solution is found
-         temp_types = types.copy()
-         while len(temp_types) > 0:
-            if Board._set_type(board, board.tiles[curr_tile.index + 1], temp_types.pop(randrange(0, len(temp_types))), types):
-               return True
-         
-         # If no solution is found, unset this tile and backtrack
-         curr_tile.type = TileType.NONE
-         return False
-      return False
-
    def _generate_board(self):
       # Get all the applicable tile types and remove NONE
       possible_types = list(map(int, TileType))
       possible_types.remove(TileType.NONE)
       init_type = possible_types[randrange(0, 5)]
-      if not Board._set_type(self, self.tiles[0], init_type, possible_types):
+      if not set_type(self, self.tiles[0], init_type, possible_types):
          print("Failed to converge.")
          return
 
    def _add_neighbors(self, node: Tile):
-      row = Board.find_row(self, node.index)
+      row = find_row(self, node.index)
       # Over or on the mid line
       if row != 0:
          if row <= len(self._rows) / 2:
@@ -151,3 +105,46 @@ class Board(object):
          if tile.type == t:
             cnt += 1
       return cnt
+
+def print_board(board : Board):
+   tabs = [3, 2, 0, 2, 3]
+   for i, tile in enumerate(board.tiles):
+      endchar = ''
+      if i in board._ends:
+         endchar = '\n'
+      if i in board._starts:
+         tab = tabs.pop(0)
+         print(" "*tab, end='')
+      print(" " + str(tile.type) + " ", end=endchar)
+
+def find_row(board : Board, index : int):
+   row_index = 0
+   for i, row_cnt in enumerate(board._rows):
+      row_index += row_cnt
+      if index < row_index:
+         return i
+
+def set_type(board : Board, curr_tile : Tile, curr_type : TileType, types : list):
+   # Check to see if the current placement is valid.
+   # Current rules being applied:
+   #  - Ensure none of the tile types are touching the same time type
+   #  - Ensure that there are only a set number of tiles
+   if (not curr_type in [ t.type for t in curr_tile.neighbors ] and
+      board._get_type_count(curr_type) < Board._BOARD_DATA[board.size].maximum_tile_cnt[curr_type]
+   ):
+      curr_tile.type = curr_type
+
+      # If the next index matches the length of the board, we are done
+      if curr_tile.index + 1 == len(board.tiles):
+         return True
+
+      # Iterate through all the possible tile types until a solution is found
+      temp_types = types.copy()
+      while len(temp_types) > 0:
+         if set_type(board, board.tiles[curr_tile.index + 1], temp_types.pop(randrange(0, len(temp_types))), types):
+            return True
+      
+      # If no solution is found, unset this tile and backtrack
+      curr_tile.type = TileType.NONE
+      return False
+   return False
