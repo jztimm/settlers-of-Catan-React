@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import MapContainer from './Components/MapContainer'
+import RandGenBtn from './Components/RandGenBtn'
+import FaveBtn from './Components/FaveBtn'
+// import Sidebar from "./Components/SideBar.js"
+// import SideBar from './Components/SideBar'
+// import Board from './Components/Board'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    board: [
+      [0,1,2],
+      [3,4,5,6],
+      [7,8,9,10,11],
+      [12,13,14,15],
+      [16,17,18]
+    ]
+  }
+
+  newBoard = (event) => {
+    let board = this.state.board
+    this.setState({ board: event})
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          {/* <Sidebar /> */}
+          <MapContainer board={this.state.board}/>
+          <span><RandGenBtn board={this.state.board} newBoard={this.newBoard} /></span>
+          <span><FaveBtn /></span>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;
