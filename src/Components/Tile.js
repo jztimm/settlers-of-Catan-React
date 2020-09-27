@@ -26,15 +26,27 @@ export default class Canvas extends React.Component {
       // this.drawHex(this.canvashex, { x: 50, y: 50 });
    }
 
-   drawHexes() {
-      for (let r = 0; r <= 4; r++) {
-         for (let q = 0; q <= 4; q++) {
-            let center = this.hexToPixel(this.hex(q, r));
-            this.drawHex(this.canvashex, center)
-            this.drawHexCordinates(this.canvashex, center, this.hex(q, r));
-         }
-      }
+   // EXPERIMENTAL
+
+   cube_spiral(center, radius){
+      let results = [center]
+      this.canvashex.foreach(1 <= k <= radius)
+         let resultss = results + drawHex(center, k)
+         console.log(resultss)
+      
    }
+
+   // EXPERIMENTAL
+
+   // drawHexes() {
+   //    for (let r = 0; r <= 4; r++) {
+   //       for (let q = 0; q <= 4; q++) {
+   //          let center = this.hexToPixel(this.hex(q, r));
+   //          this.drawHex(this.canvashex, center)
+   //          this.drawHexCordinates(this.canvashex, center, this.hex(q, r));
+   //       }
+   //    }
+   // }
 
    drawHex(canvasID, center) {
       for (let i = 0; i <= 5; i++) {
@@ -60,16 +72,6 @@ export default class Canvas extends React.Component {
       return this.Point(x, y);
    }
 
-   // EXPERIMENTAL
-
-   // cube_spiral(center, radius){
-   //    var results = [center]
-   //    for each 1 ≤ k ≤ radius:
-   //    results = results + cube_ring(center, k)
-   //    return results
-   // }
-
-   // EXPERIMENTAL
 
    Point(x, y) {
       return {x: x, y: y};
