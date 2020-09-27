@@ -1,4 +1,9 @@
 from collections import namedtuple
+from enum import Enum
+
+class BoardType(Enum):
+    BASE = 0
+    BASE_EXP = 1
 
 BoardData = namedtuple("BoardData", [
       # The number of tiles on a board
@@ -13,6 +18,8 @@ BoardData = namedtuple("BoardData", [
       "corners",
       # The indicies of the tiles that are edge pieces
       "edges",
+      # The number of spaces to add when printing the board
+      "tabs",
       # The maximum number of resource types allowed on a board
       # 0: Ore
       # 1: Jimmies

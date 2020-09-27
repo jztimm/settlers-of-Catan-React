@@ -33,7 +33,7 @@ class Tile(object):
       if len(self.neighbors) < self._max_neighbors:
          self.neighbors.append(neigh)
       else:
-         print("ERROR: Attempting to add {} to {}. Node already has [{}] neighbors!".format(neigh.index, self.index, ", ".join(self.neighbors)))
+         print("ERROR: Attempting to add {} to {}. Node already has [{}] neighbors!".format(neigh.index, self.index, self.neighbors))
 
    def markAsCenter(self):
       self._max_neighbors = 6
