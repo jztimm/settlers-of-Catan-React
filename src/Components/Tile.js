@@ -60,6 +60,16 @@ export default class Canvas extends React.Component {
       return this.Point(x, y);
    }
 
+   // EXPERIMENTAL
+
+   // cube_spiral(center, radius){
+   //    var results = [center]
+   //    for each 1 ≤ k ≤ radius:
+   //    results = results + cube_ring(center, k)
+   //    return results
+   // }
+
+   // EXPERIMENTAL
 
    Point(x, y) {
       return {x: x, y: y};
