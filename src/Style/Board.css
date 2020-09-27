@@ -1,0 +1,47 @@
+.board {
+   position: fixed;
+   display: flex;
+   align-content: flex-start;
+   flex-direction: column;
+   background-color: #75baf3;
+   height: 1000px;
+   width: 100%;
+}
+
+.board-row {
+   display: flex;
+   justify-content: center;
+   width: 1000px;
+}
+
+.port {
+   width: 104px;
+   position: relative;
+   top: 50px;
+   padding-top: 10px;
+   font-size: 2em;
+}
+
+.port-left {
+   text-align: right;
+   padding-right: 16px;
+}
+
+.port-right{
+   padding-left: 16px;
+}
+
+.spacer {
+   width: 104px;
+}
+.territory{
+   display: flex;
+      align-content: center;
+      justify-content: center;
+      margin-top: 50px;
+      margin-bottom: -20px;
+      width: 104px;
+      height: 60px;   
+      position: relative;
+      border: 1px solid #75baf3;
+}
