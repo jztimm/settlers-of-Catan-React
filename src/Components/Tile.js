@@ -22,31 +22,53 @@ export default class Canvas extends React.Component {
       const { canvasWidth, canvasHeight } = this.state.canvasSize;
       this.canvashex.width = canvasWidth;
       this.canvashex.height = canvasHeight;
-      this.drawHexes();
-      // this.drawHex(this.canvashex, { x: 50, y: 50 });
+      // this.drawHexes();
+      let centerline = 400;
+      let top_row_x = 125;
+      let rows = [3, 4, 5, 4, 3]
+      for (let i = 0; i < rows.length; i++)
+      {
+         let is_centered = i % 2;
+         if (is_centered === 0)
+         {
+            this.drawHex(this.canvashex, { x: centerline, y: top_row_x + i * 85})
+         }
+         let num_sides = Math.floor(rows[i] / 2)
+         for (let j = 1; j < num_sides + 1; j++)
+         {
+            if (is_centered === 1)
+            {
+               this.drawHex(this.canvashex,
+                  { 
+                     x: centerline + this.state.hexSize * 2 * j - this.state.hexSize,
+                     y: top_row_x + i * 85
+                  }
+               )
+               this.drawHex(this.canvashex,
+                  {
+                     x: centerline + this.state.hexSize * 2 * -j + this.state.hexSize,
+                     y: top_row_x + i * 85
+                  }
+               )
+            }
+            else
+            {
+               this.drawHex(this.canvashex,
+                  {
+                     x: centerline + this.state.hexSize * 2 * j,
+                     y: top_row_x + i * 85
+                  }
+               )
+               this.drawHex(this.canvashex,
+                  {
+                     x: centerline + this.state.hexSize * 2 * -j,
+                     y: top_row_x + i * 85
+                  }
+               )
+            }
+         }
+      }
    }
-
-   // EXPERIMENTAL
-
-   cube_spiral(center, radius){
-      let results = [center]
-      this.canvashex.foreach(1 <= k <= radius)
-         let resultss = results + drawHex(center, k)
-         console.log(resultss)
-      
-   }
-
-   // EXPERIMENTAL
-
-   // drawHexes() {
-   //    for (let r = 0; r <= 4; r++) {
-   //       for (let q = 0; q <= 4; q++) {
-   //          let center = this.hexToPixel(this.hex(q, r));
-   //          this.drawHex(this.canvashex, center)
-   //          this.drawHexCordinates(this.canvashex, center, this.hex(q, r));
-   //       }
-   //    }
-   // }
 
    drawHex(canvasID, center) {
       for (let i = 0; i <= 5; i++) {
@@ -65,20 +87,8 @@ export default class Canvas extends React.Component {
       return this.Point(x, y);
    }
 
-   hexToPixel(h) {
-      let hexOrigin = this.state.hexOrigin;
-      let x = this.state.hexSize * Math.sqrt(4) * (h.q + h.r/2) + hexOrigin.x;
-      let y = this.state.hexSize * 3/2 * h.r + hexOrigin.y;
-      return this.Point(x, y);
-   }
-
-
    Point(x, y) {
       return {x: x, y: y};
-   }
-
-   hex(q, r) {
-      return {q: q, r: r}
    }
 
    drawLine(canvasID, start, end) {
