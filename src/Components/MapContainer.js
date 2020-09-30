@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from "./SideBar.js"
 import Canvas from "./Tile.js"
+// import Sidebar from "./SideBar.js"
 // import Board from './Board'
 // import RandGenBtn from './RandGenBtn'
 

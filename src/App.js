@@ -1,8 +1,11 @@
 import React from 'react'
+import Header from './Components/Header'
 import MapContainer from './Components/MapContainer'
 import RandGenBtn from './Components/RandGenBtn'
 import FaveBtn from './Components/FaveBtn'
 import Sidebar from "./Components/SideBar.js"
+import './App.css'
+import './Style/Sidebar.css'
 // import SideBar from './Components/SideBar'
 // import Board from './Components/Board'
 
@@ -19,7 +22,7 @@ class App extends React.Component {
   }
 
   newBoard = (event) => {
-    let board = this.state.board
+    // let board = this.state.board
     this.setState({ board: event})
   }
 
@@ -27,6 +30,7 @@ class App extends React.Component {
     return (
       <div>
         <div>
+          <Header />
           <Sidebar />
           <span><RandGenBtn board={this.state.board} newBoard={this.newBoard} /></span>
           <span><FaveBtn /></span>

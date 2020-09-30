@@ -4,7 +4,9 @@
 
 .btn{
    position: relative;
-   margin-left: 75%;
+   bottom: -175px;
+   margin-top: 25px;
+   margin-left: 80%;
    border-radius: 999px;
    border: 0.1px solid
 }

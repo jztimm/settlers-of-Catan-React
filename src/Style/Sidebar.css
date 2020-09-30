@@ -1,10 +1,19 @@
-.sidebar {
-   position: relative;
+.Sidebar {
+   position: fixed;
+   /* right: 1600px; */
    top: 0;
    bottom: 0;
-   left: 0;
+   left: 0px;
    min-height: 100vh !important;
    z-index: 100;
-   padding: 48px 0 0;
+   padding: 150px 0 0;
    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+   background-color: #3d4752
+}
+
+.nav-item{
+   background-color: #3d4752
+}
+a{
+   color: white;
 }

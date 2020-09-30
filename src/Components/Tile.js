@@ -8,21 +8,21 @@ export default class Canvas extends React.Component {
       super(props);
       this.state = {
          hexSize: 50,
-         hexOrigin: {x: 100, y: 130}
+         hexOrigin: {x: 100, y: 130},
+         canvasSize: { canvasWidth: 800, canvasHeight: 600 }
       }
    }
 
-   componentWillMount() {
-      this.setState({
-         canvasSize: { canvasWidth: 800, canvasHeight: 600 }
-      })
-   }
+   // componentWillMount() {
+   //    this.setState({
+   //    })
+   // }
 
    componentDidMount() {
       const { canvasWidth, canvasHeight } = this.state.canvasSize;
       this.canvashex.width = canvasWidth;
       this.canvashex.height = canvasHeight;
-      // this.drawHexes();
+      // this.drawHex(this.canvashex, { x: 50, y: 50 });
       let centerline = 400;
       let top_row_x = 125;
       let rows = [3, 4, 5, 4, 3]
@@ -100,11 +100,11 @@ export default class Canvas extends React.Component {
       ctx.closePath();
    }
 
-   drawHexCordinates(canvasID, center, h) {
-      const ctx = canvasID.getContext('2d');
-      ctx.fillText(h.q, center.x-10, center.y);
-      ctx.fillText(h.r, center.x+7, center.y)
-   }
+   // drawHexCordinates(canvasID, center, h) {
+   //    const ctx = canvasID.getContext('2d');
+   //    ctx.fillText(h.q, center.x-10, center.y);
+   //    ctx.fillText(h.r, center.x+7, center.y)
+   // }
 
    render() {
       return (

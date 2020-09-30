@@ -1,4 +1,16 @@
-.App {
+* {
+  background-color: #76BBFF;
+}
+
+.Logo {
+  height: 350px;
+  width: 1000px;
+  position: relative;
+  margin-left: 13%;
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +47,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
