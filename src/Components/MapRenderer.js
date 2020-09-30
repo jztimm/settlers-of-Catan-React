@@ -13,11 +13,6 @@ export default class Canvas extends React.Component {
       }
    }
 
-   // componentWillMount() {
-   //    this.setState({
-   //    })
-   // }
-
    componentDidMount() {
       const { canvasWidth, canvasHeight } = this.state.canvasSize;
       this.canvashex.width = canvasWidth;
@@ -99,12 +94,6 @@ export default class Canvas extends React.Component {
       ctx.stroke();
       ctx.closePath();
    }
-
-   // drawHexCordinates(canvasID, center, h) {
-   //    const ctx = canvasID.getContext('2d');
-   //    ctx.fillText(h.q, center.x-10, center.y);
-   //    ctx.fillText(h.r, center.x+7, center.y)
-   // }
 
    render() {
       return (
