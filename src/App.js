@@ -32,7 +32,7 @@ class App extends React.Component {
         <div>
           <Header />
           <Sidebar />
-          <span><RandGenBtn len={this.board.length} newBoard={this.newBoard} /></span>
+          <span><RandGenBtn len={this.state.board.length} newBoard={this.newBoard} /></span>
           <span><FaveBtn /></span>
           <MapContainer board={this.state.board}/>
         </div>

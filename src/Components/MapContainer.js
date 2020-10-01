@@ -1,5 +1,5 @@
 import React from 'react'
-import Canvas from "./MapRenderer.js"
+import MapRenderer from "./MapRenderer.js"
 // import Sidebar from "./SideBar.js"
 // import Board from './Board'
 // import RandGenBtn from './RandGenBtn'
