@@ -1,7 +1,8 @@
 canvas {
    border: 1px solid black;
    position: relative;
-   left: 150px;
+   left: 400px;
+   margin-top: -125px;
    /* background-color: #01BBFF; */
    /* background-color: #c4a667; */
 }

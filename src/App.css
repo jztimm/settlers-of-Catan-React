@@ -7,13 +7,62 @@
   background-color: #FCD56A;
 }
 
+.welcome {
+  background-color: #FCD56A;
+}
+
+.welcome-Logo {
+  margin-left: 20%;
+}
+
+div.spacer {
+  position: relative;
+  padding: 30px;
+  
+  margin-top: 25px;
+  margin-left: 40%;
+  border-radius: 999px;
+}
+
+.home-btn {
+  background-color: rgb(255, 192, 74);
+  color: black;
+}
+
+.welcome-h1 {
+  left: 0%;
+  /* background-color: #FCD56A; */
+}
+
+.workinprogress {
+  max-width: 100%;
+    max-height: 100%;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
 .Logo {
   height: 350px;
   width: 1000px;
   position: relative;
-  margin-left: 13%;
+  margin-left: 25%;
 }
 
+.Login {
+  padding: 60px 0;
+}
+
+.Login form {
+  margin: 0 auto;
+  max-width: 320px;
+}
 
 /* .App {
   text-align: center;

@@ -1,12 +1,13 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
-import Header from './Components/Header'
-import MapContainer from './Components/MapContainer'
-import RandGenBtn from './Components/RandGenBtn'
-import FaveBtn from './Components/FaveBtn'
-import Sidebar from "./Components/SideBar.js"
+import {Route, Switch} from 'react-router-dom'
+import Welcome from './Components/Welcome'
+import WorkInProgress from './Components/WorkInProgress'
+import Main from './Components/Main'
+import Login from './Components/Login'
+import Users from './Components/Users'
 import './App.css'
 import './Style/Sidebar.css'
+// import Header from "./Components/Header"
 // import SideBar from './Components/SideBar'
 // import Board from './Components/Board'
 
@@ -19,7 +20,8 @@ class App extends React.Component {
       7,8,9,10,11,
       12,13,14,15,
       16,17,18
-    ]
+    ],
+    users: []
   }
 
   // getApiData=()=>{
@@ -29,13 +31,24 @@ class App extends React.Component {
   componentDidMount() {
     fetch('http://localhost:3000/api/v1/users')
       .then(res => res.json())
-      // .then(data => console.log(data))
-      // .catch(err => console.log(err))
+      .then(data => this.setState({
+        users: data
+      }))
+      .catch(err => console.log(err))
+  }
+
+  loopUsers=() => {
+    const users = this.state.users
+    return users.map(user => <Users key={user.id} user={user} />)
   }
 
   newBoard = (arr) => {
     // let board = this.state.board
     this.setState({ board: arr })
+  }
+
+  renderMain=()=>{
+    
   }
 
   handleClick=() => {
@@ -49,17 +62,19 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.state.board)
+    console.log(this.state.users)
     return (
       <div>
-        <div>
-          {/* <Route path= /> */}
-          <Header />
-          <Sidebar />
-          <span><RandGenBtn handleClick={this.handleClick} /></span>
-          <span><FaveBtn /></span>
-          <MapContainer />
-        </div>
+        <Switch>
+
+          <Route path="/home" exact render={() => <Welcome />} />
+          <Route path="/login" exact render={() => <Login />}/>
+          <Route path="/saves" exact render={() => <WorkInProgress />}/>
+          <Route path="/settings" exact render={() => <WorkInProgress />}/>
+          <Route path="/main" render={() => <Main handleClick={this.handleClick}/>} />
+        
+          <Route path="/alloftheusersinmydatabaseaswellasalloftheirinfo" exact render={() => <Users />} />
+        </Switch>
       </div>
     )
   }
