@@ -8,13 +8,16 @@ class Sidebar extends React.Component {
       <div className="Sidebar">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link" href="#">Active</a>
+            <a className="nav-link" href="#">Home</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Login</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Saves</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">Settings</a>
           </li>
           {/* <li className="nav-item">
             <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>

@@ -11,7 +11,7 @@ class MapContainer extends React.Component {
    render() {
       return (
          <>
-            <MapRenderer board={this.props.board}/>
+            <MapRenderer />
          </>
       )
    }

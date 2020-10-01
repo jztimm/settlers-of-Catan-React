@@ -1,4 +1,5 @@
 import React from 'react'
+import {Route} from 'react-router-dom'
 import Header from './Components/Header'
 import MapContainer from './Components/MapContainer'
 import RandGenBtn from './Components/RandGenBtn'
@@ -21,20 +22,43 @@ class App extends React.Component {
     ]
   }
 
-  newBoard = (event) => {
-    // let board = this.state.board
-    this.setState({ board: event })
+  // getApiData=()=>{
+    
+  // }
+  
+  componentDidMount() {
+    fetch('http://localhost:3000/api/v1/users')
+      .then(res => res.json())
+      // .then(data => console.log(data))
+      // .catch(err => console.log(err))
   }
 
+  newBoard = (arr) => {
+    // let board = this.state.board
+    this.setState({ board: arr })
+  }
+
+  handleClick=() => {
+    let currentBoard = this.state.board
+    let newBoard = [];
+    for (let i = 0; i < currentBoard.length; i++) {
+      newBoard.push(Math.floor(Math.random() * currentBoard.length))
+    }
+    this.newBoard(newBoard)
+  }
+
+
   render() {
+    console.log(this.state.board)
     return (
       <div>
         <div>
+          {/* <Route path= /> */}
           <Header />
           <Sidebar />
-          <span><RandGenBtn len={this.state.board.length} newBoard={this.newBoard} /></span>
+          <span><RandGenBtn handleClick={this.handleClick} /></span>
           <span><FaveBtn /></span>
-          <MapContainer board={this.state.board}/>
+          <MapContainer />
         </div>
       </div>
     )

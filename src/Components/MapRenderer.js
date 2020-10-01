@@ -28,7 +28,7 @@ export default class MapRenderer extends React.Component {
          let is_centered = i % 2;
          if (is_centered === 0)
          {
-            this.drawHex(this.canvashex, { x: centerline, y: top_row_x + i * 85})
+            this.drawHex(this.canvashex, { x: centerline, y: top_row_x + i * 85}, "black", "gray")
          }
          let num_sides = Math.floor(rows[i] / 2)
          for (let j = 1; j < num_sides + 1; j++)
@@ -39,13 +39,13 @@ export default class MapRenderer extends React.Component {
                   { 
                      x: centerline + this.state.hexSize * 2 * j - this.state.hexSize,
                      y: top_row_x + i * 85
-                  }
+                  }, "black", "gray"
                )
                this.drawHex(this.canvashex,
                   {
                      x: centerline + this.state.hexSize * 2 * -j + this.state.hexSize,
                      y: top_row_x + i * 85
-                  }
+                  }, "black", "gray"
                )
             }
             else
@@ -54,27 +54,48 @@ export default class MapRenderer extends React.Component {
                   {
                      x: centerline + this.state.hexSize * 2 * j,
                      y: top_row_x + i * 85
-                  }
+                  }, "black", "gray"
                )
                this.drawHex(this.canvashex,
                   {
                      x: centerline + this.state.hexSize * 2 * -j,
                      y: top_row_x + i * 85
-                  }
+                  }, "black", "gray"
                )
             }
          }
       }
    }
 
-   drawHex(canvasID, center) {
+   
+   drawHex(canvasID, center, lineColor, fillColor) {
       for (let i = 0; i <= 5; i++) {
          let start = this.getHexCornerCord(center, i);
          let end = this.getHexCornerCord(center, i + 1);
-         this.drawLine(canvasID, { x: start.x, y: start.y }, { x: end.x, y: end.y })
+         this.fillHex(canvasID, center, fillColor);
+         this.drawLine(canvasID, start, end, lineColor);
       }
    }
-
+   
+   fillHex = (canvasID, center, fillColor)=> {
+      const c0 = this.getHexCornerCord(center, 0);
+      const c1 = this.getHexCornerCord(center, 1);
+      const c2 = this.getHexCornerCord(center, 2);
+      const c3 = this.getHexCornerCord(center, 3);
+      const c4 = this.getHexCornerCord(center, 4);
+      const c5 = this.getHexCornerCord(center, 5);
+      const ctx = canvasID.getContext('2d');
+      ctx.beginPath();
+      ctx.fillStyle = fillColor;
+      ctx.moveTo(c0.x, c0.y);
+      ctx.lineTo(c1.x, c1.y);
+      ctx.lineTo(c2.x, c2.y);
+      ctx.lineTo(c3.x, c3.y);
+      ctx.lineTo(c4.x, c4.y);
+      ctx.lineTo(c5.x, c5.y);
+      ctx.closePath();
+      ctx.fill();
+   }
 
    getHexCornerCord(center, i){
       let angle_deg = 60 * i - 30;
