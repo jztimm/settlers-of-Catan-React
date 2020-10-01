@@ -2,10 +2,12 @@ import React from 'react'
 import '../Style/Tile.css'
 
 
-export default class Canvas extends React.Component {
+export default class MapRenderer extends React.Component {
 
    constructor(props) {
       super(props);
+
+      this.board = this.props.board
       this.state = {
          hexSize: 50,
          hexOrigin: {x: 100, y: 130},
