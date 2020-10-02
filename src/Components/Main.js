@@ -13,7 +13,7 @@ export default class Main extends React.Component {
             <Header />
             <span><RandGenBtn handleClick={this.props.handleClick} /></span>
             <span><FaveBtn /></span>
-            <MapContainer />
+            <MapContainer board={this.props.board}/>
          </>
       )
    }

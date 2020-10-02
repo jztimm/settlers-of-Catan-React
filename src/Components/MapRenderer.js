@@ -23,12 +23,16 @@ export default class MapRenderer extends React.Component {
       let centerline = 400;
       let top_row_x = 125;
       let rows = [3, 4, 5, 4, 3]
+      let row = [1]
       for (let i = 0; i < rows.length; i++)
       {
          let is_centered = i % 2;
          if (is_centered === 0)
          {
-            this.drawHex(this.canvashex, { x: centerline, y: top_row_x + i * 85}, "black", "gray")
+            this.drawHex(this.canvashex, { x: centerline, y: top_row_x + i * 85}, "black", "#92282E")
+            // let randDesert = row[Math.floor(Math.random()*row.length)]
+            this.drawHex(this.canvashex, { x: centerline, y: top_row_x}, "black", "#FFE4B5")
+            // this.drawHexValues(this.canvashex, { x: centerline, y: top_row_x + i * 85})
          }
          let num_sides = Math.floor(rows[i] / 2)
          for (let j = 1; j < num_sides + 1; j++)
@@ -39,13 +43,23 @@ export default class MapRenderer extends React.Component {
                   { 
                      x: centerline + this.state.hexSize * 2 * j - this.state.hexSize,
                      y: top_row_x + i * 85
-                  }, "black", "gray"
+                  }, "black", "#FFFF99"
+               )
+               this.drawHexValues(this.canvashex, { 
+                  x: centerline + this.state.hexSize * 2 * j - this.state.hexSize,
+                  y: top_row_x + i * 85
+               }
                )
                this.drawHex(this.canvashex,
                   {
                      x: centerline + this.state.hexSize * 2 * -j + this.state.hexSize,
                      y: top_row_x + i * 85
-                  }, "black", "gray"
+                  }, "black", "#B3C9B3"
+               )
+               this.drawHexValues(this.canvashex, {
+                  x: centerline + this.state.hexSize * 2 * -j + this.state.hexSize,
+                  y: top_row_x + i * 85
+               }
                )
             }
             else
@@ -54,15 +68,25 @@ export default class MapRenderer extends React.Component {
                   {
                      x: centerline + this.state.hexSize * 2 * j,
                      y: top_row_x + i * 85
-                  }, "black", "gray"
+                  }, "black", "#36454f"
+               )
+               this.drawHexValues(this.canvashex, {
+                  x: centerline + this.state.hexSize * 2 * j,
+                  y: top_row_x + i * 85
+               }
                )
                this.drawHex(this.canvashex,
                   {
                      x: centerline + this.state.hexSize * 2 * -j,
                      y: top_row_x + i * 85
-                  }, "black", "gray"
+                  }, "black", "#165916"
                )
+               this.drawHexValues(this.canvashex, {
+                  x: centerline + this.state.hexSize * 2 * -j,
+                  y: top_row_x + i * 85
+               })
             }
+            // random this.drawHex(this.canvashex, { x: centerline, y: top_row_x + i * 85}, "black", "#FFE4B5")
          }
       }
    }
@@ -75,6 +99,10 @@ export default class MapRenderer extends React.Component {
          this.fillHex(canvasID, center, fillColor);
          this.drawLine(canvasID, start, end, lineColor);
       }
+   }
+
+   drawHexValues(canvasID, center ) {
+      
    }
    
    fillHex = (canvasID, center, fillColor)=> {

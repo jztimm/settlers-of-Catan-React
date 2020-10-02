@@ -1,4 +1,5 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
 import '../Style/Sidebar.css'
 
 class Sidebar extends React.Component {
@@ -7,24 +8,21 @@ class Sidebar extends React.Component {
     return (
       <div className="Sidebar">
         <ul className="nav flex-column">
-          <li className="nav-item">
-            <a className="nav-link" href="/home">Home</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/main">Main</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/login">Login</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/saves">Saves</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/settings">Settings</a>
-          </li>
-          {/* <li className="nav-item">
-            <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
-          </li> */}
+          <NavLink className="nav-link nav-item" to="/home">
+            <a>Home</a>
+            </NavLink>
+          <NavLink className="nav-link nav-item" to="/board">
+            <a>Board</a>
+          </NavLink>
+          <NavLink className="nav-link nav-item" to="/login">
+            <a>Login</a>
+          </NavLink>
+          <NavLink className="nav-link nav-item" to="/saves">
+            <a>Saves</a>
+          </NavLink>
+          <NavLink className="nav-link nav-item" to="/settings">
+            <a>Settings</a>
+          </NavLink>
         </ul>
       </div>
     )

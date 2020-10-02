@@ -45,3 +45,39 @@
       position: relative;
       border: 1px solid #75baf3;
 }
+
+.territory-type-ore, .territory-type-ore:before, .territory-type-ore:after{
+   background-color: rgb(59, 59, 59);
+   border-bottom-color: rgb(59, 59, 59);
+   border-top-color: rgb(59, 59, 59);
+}
+
+.territory-type-forest, .territory-type-forest:before, .territory-type-forest:after {
+   background-color: rgb(3, 77, 0);
+   border-bottom-color: rgb(3, 77, 0);
+   border-top-color: rgb(3, 77, 0);
+}
+
+.territory-type-sheep, .territory-type-sheep:before, .territory-type-sheep:after {
+   background-color: rgb(157, 214, 145);
+   border-bottom-color: rgb(157, 214, 145);
+   border-top-color: rgb(157, 214, 145);
+}
+
+.territory-type-brick, .territory-type-brick:before, .territory-type-brick:after {
+   background-color: rgb(77, 0, 0);
+   border-bottom-color: rgb(77, 0, 0);
+   border-top-color: rgb(77, 0, 0);
+}
+
+.territory-type-wheat, .territory-type-wheat:before, .territory-type-wheat:after {
+   background-color: rgb(252, 249, 102);
+   border-bottom-color: rgb(252, 249, 102);
+   border-top-color: rgb(252, 249, 102);
+}
+
+.territory-type-desert, .territory-type-desert:before, .territory-type-desert:after{
+   background-color: rgb(223, 200, 159);
+   border-bottom-color: rgb(223, 200, 159);
+   border-top-color: rgb(223, 200, 159);
+}
